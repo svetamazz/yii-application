@@ -32,7 +32,8 @@ class Usermusic extends \yii\db\ActiveRecord
     {
         return [
             [['email', 'login', 'password', 'role'], 'required'],
-            [['email', 'login', 'password'], 'string', 'max' => 30],
+            [['email', 'login'], 'string', 'max' => 30],
+            [['password'], 'string', 'max' => 100],
             [['role'], 'string', 'max' => 10],
             [['email'], 'unique'],
             [['login'], 'unique'],

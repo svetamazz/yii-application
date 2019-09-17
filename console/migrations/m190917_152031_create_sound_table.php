@@ -16,9 +16,9 @@ class m190917_152031_create_sound_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(80)->notNull(),
             'author' => $this->string(80),
-            'fileName' => $this->string(30)->notNull()->unique(),
+            'fileName' => $this->string(250)->notNull()->unique(),
             'description'=> $this->string(250)->notNull(),
-            'categoryId' => $this->integer()
+            'categoryId' => $this->integer()->notNull()
         ]);
 
         // creates index for column `categoryId`
@@ -37,6 +37,16 @@ class m190917_152031_create_sound_table extends Migration
             'id',
             'CASCADE'
         );
+
+        /*
+        // add unique index for name+author
+        $this->createIndex(
+            'idx-unique-sound-name-author',
+            'sound',
+            'name, author',
+            1
+        );
+        */
     }
 
     /**

@@ -6,6 +6,7 @@ use Yii;
 use app\models\Sound;
 use app\models\SoundSearch;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -66,12 +67,15 @@ class SoundController extends Controller
     {
         $model = new Sound();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            
+            $model->fileName=UploadedFile::getInstance($model,'fileName');
+            $name=date('Y-m-d-H-i-s').$model->name.'.'.$model->fileName->extension;
+            $model->fileName->saveAs('uploads/'.$name);
 
-            $model->file=UploadedFile::getInstance($model,'fileName');
-            $ext=$model->file;
-            $model->file->saveAs()
-
+            $model->fileName=$name;
+            
+            $model->save();
 
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -93,6 +97,9 @@ class SoundController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

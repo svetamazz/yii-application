@@ -15,9 +15,9 @@ class m190917_152052_create_complaint_table extends Migration
         $this->createTable('{{%complaint}}', [
             'id' => $this->primaryKey(),
             'title' =>  $this->string(100)->notNull(),
-            'text' => $this->text(),
-            'soundId' => $this->integer(),
-            'userMusicId' => $this->integer()
+            'text' => $this->text()->notNull(),
+            'soundId' => $this->integer()->notNull(),
+            'userMusicId' => $this->integer()->notNull()
         ]);
 
          // creates index for column `categoryId`

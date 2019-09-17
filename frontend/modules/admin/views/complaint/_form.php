@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\Sound;
+use app\models\Usermusic;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Complaint */
@@ -15,10 +18,24 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+    
+    <?
+    $sounds = Sound::find()->all();
+    $items = ArrayHelper::map($sounds,'id','name');
+    $params = [
+        'prompt' => 'Choose sound name'
+    ];
+    echo $form->field($model, 'soundId')->dropDownList($items,$params);
+    ?>
 
-    <?= $form->field($model, 'soundId')->textInput() ?>
-
-    <?= $form->field($model, 'userMusicId')->textInput() ?>
+    <?
+    $users = Usermusic::find()->all();
+    $items = ArrayHelper::map($users,'id','login');
+    $params = [
+        'prompt' => 'Choose user login'
+    ];
+    echo $form->field($model, 'userMusicId')->dropDownList($items,$params);
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

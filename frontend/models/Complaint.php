@@ -32,7 +32,7 @@ class Complaint extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title','text','soundId','userMusicId'], 'required'],
             [['text'], 'string'],
             [['soundId', 'userMusicId'], 'integer'],
             [['title'], 'string', 'max' => 100],
@@ -50,8 +50,8 @@ class Complaint extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'text' => 'Text',
-            'soundId' => 'Sound ID',
-            'userMusicId' => 'User Music ID',
+            'soundId' => 'Sound',
+            'userMusicId' => 'User',
         ];
     }
 

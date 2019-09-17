@@ -34,11 +34,10 @@ class Sound extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description'], 'required'],
-            [['url'], 'file'],
+            [['name', 'description','fileName','categoryId'], 'required'],
+            [['fileName'], 'file', 'extensions' => 'mp3', 'maxSize'=>1024 * 1024 * 50, 'tooBig'=>'File has to be smaller than 50MB'],
             [['categoryId'], 'integer'],
             [['name', 'author'], 'string', 'max' => 80],
-            [['url'], 'string', 'max' => 30],
             [['description'], 'string', 'max' => 250], 
             [['categoryId'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['categoryId' => 'id']],
         ];
@@ -55,7 +54,7 @@ class Sound extends \yii\db\ActiveRecord
             'author' => 'Author',
             'fileName' => 'File Name',
             'description' => 'Description',
-            'categoryId' => 'Category ID',
+            'categoryId' => 'Category',
         ];
     }
 
