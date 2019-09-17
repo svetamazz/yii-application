@@ -19,6 +19,7 @@ use Yii;
  */
 class Sound extends \yii\db\ActiveRecord
 {
+    public $url;
     /**
      * {@inheritdoc}
      */
@@ -33,12 +34,12 @@ class Sound extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'fileName', 'description'], 'required'],
+            [['name', 'description'], 'required'],
+            [['url'], 'file'],
             [['categoryId'], 'integer'],
             [['name', 'author'], 'string', 'max' => 80],
-            [['fileName'], 'string', 'max' => 30],
-            [['description'], 'string', 'max' => 250],
-            [['fileName'], 'unique'],
+            [['url'], 'string', 'max' => 30],
+            [['description'], 'string', 'max' => 250], 
             [['categoryId'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['categoryId' => 'id']],
         ];
     }

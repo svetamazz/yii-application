@@ -67,6 +67,12 @@ class SoundController extends Controller
         $model = new Sound();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $model->file=UploadedFile::getInstance($model,'fileName');
+            $ext=$model->file;
+            $model->file->saveAs()
+
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
