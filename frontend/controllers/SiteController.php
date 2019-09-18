@@ -77,6 +77,22 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+
+     /**
+     * Displays songs from selected category.
+     *
+     * @return mixed
+     */
+    public function actionCategory()
+    {
+        return $this->render('category');
+    }
+
+    public function actionView()
+    {
+        return $this->render('view');
+    }
+
     /**
      * Logs in a user.
      *
