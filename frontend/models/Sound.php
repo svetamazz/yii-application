@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use yii\data\Pagination;
+
 use Yii;
 
 /**
@@ -72,5 +74,33 @@ class Sound extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::className(), ['id' => 'categoryId']);
+    }
+
+    public static function getAll($pageSize=10){
+        $query = Sound::find();
+        $countQuery = clone $query;
+        $pagination = new Pagination(['totalCount' => $countQuery->count(),'pageSize'=>$pageSize]);
+        $songs = $query->offset($pagination->offset)
+        ->limit($pagination->limit)
+        ->all();
+
+        $data['songs']=$songs;
+        $data['pagination']=$pagination;
+
+        return $data;
+    }
+
+    public static function getFromCategory($categoryId,$pageSize=10){
+        $query = Sound::find();
+        $countQuery = clone $query;
+        $pagination = new Pagination(['totalCount' => $countQuery->count(),'pageSize'=>$pageSize]);
+        $songs = $query->offset($pagination->offset)
+        ->limit($pagination->limit)
+        ->all();
+
+        $data['songs']=$songs;
+        $data['pagination']=$pagination;
+
+        return $data;
     }
 }

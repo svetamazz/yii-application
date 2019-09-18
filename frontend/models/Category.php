@@ -51,4 +51,10 @@ class Category extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Sound::className(), ['categoryId' => 'id']);
     }
+
+
+    public static function getAll(){
+        $query=self::find();
+        return $query->all();
+    }
 }

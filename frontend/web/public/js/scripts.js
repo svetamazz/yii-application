@@ -66,7 +66,11 @@
         });
     }());
 
-
+    maudio({
+        obj:'audio',
+        fastStep: 10
+        });
+        
 
 
 })(jQuery);
