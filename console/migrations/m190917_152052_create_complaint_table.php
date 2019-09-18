@@ -34,6 +34,7 @@ class m190917_152052_create_complaint_table extends Migration
             'soundId',
             'sound',
             'id',
+            'CASCADE',
             'CASCADE'
         );
 
@@ -51,6 +52,7 @@ class m190917_152052_create_complaint_table extends Migration
             'userMusicId',
             'usermusic',
             'id',
+            'CASCADE',
             'CASCADE'
         );
     }

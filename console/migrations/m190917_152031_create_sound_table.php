@@ -35,6 +35,7 @@ class m190917_152031_create_sound_table extends Migration
             'categoryId',
             'category',
             'id',
+            'CASCADE',
             'CASCADE'
         );
 

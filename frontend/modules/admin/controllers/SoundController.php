@@ -70,7 +70,7 @@ class SoundController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             
             $model->fileName=UploadedFile::getInstance($model,'fileName');
-            $name=date('Y-m-d-H-i-s').$model->name.'.'.$model->fileName->extension;
+            $name=$model->name.'-'.$model->author.'-'.date('Y-m-d-H-i-s').'.'.$model->fileName->extension;
             $model->fileName->saveAs('uploads/'.$name);
 
             $model->fileName=$name;
