@@ -1,0 +1,42 @@
+.audio {
+    background: #fff;
+    padding: 5px 10px 10px 10px;
+    margin:10px 0px;
+}
+
+.songName{
+    margin:0px 10px;
+    font-weight: bold;
+    font-size: 1vw;
+}
+
+.songAuthor{
+    margin:0px 10px;
+    font-size: 0.75vw;
+    color:grey;
+}
+
+.downloadBtn{
+    float:right;
+}
+
+.downloadImg{
+    width:35px;
+    margin-left:5px;
+}
+
+.downloadBtn:hover{
+    cursor: pointer;
+}
+
+div.maudio .audio-control .progress-bar{
+    width:320px !important;
+}
+
+.downlBtn{
+    margin-bottom:10px;
+}
+
+.info{
+    font-size: 0.9vw;
+}

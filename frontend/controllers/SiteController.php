@@ -15,6 +15,10 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 
+use app\models\Sound;
+use app\models\Category;
+use  yii\data\Pagination;
+
 /**
  * Site controller
  */
@@ -74,7 +78,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $categories = Category::getAll();
+        $songsData= Sound::getAll(2);
+
+        return $this->render('index',
+        [
+            'songs'=>$songsData['songs'],
+            'pagination'=>$songsData['pagination'],
+            'categories' => $categories
+        ]);
     }
 
 
@@ -83,14 +95,29 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionCategory()
+    public function actionCategory($id)
     {
-        return $this->render('category');
+        $songs=Sound::getFromCategory($id,2);
+
+        return $this->render('category',
+            [
+                'songs'=>$songs
+            ]
+        );
     }
 
-    public function actionView()
+    public function actionView($id)
     {
-        return $this->render('view');
+        $categories = Category::getAll();
+        $song=Sound::findOne($id);
+        $songSize='none';
+
+        return $this->render('view',
+        [
+            'categories'=>$categories,
+            'song'=>$song,
+            'songSize'=>$songSize
+        ]);
     }
 
     /**

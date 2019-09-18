@@ -342,9 +342,9 @@ a.more-link:hover {
     border-color: #00BFF3;
 }
 
-.post {
+.audio {
     background: #fff;
-    margin-bottom: 50px;
+    margin: 0px 10px;
 }
 
 .post-content {
