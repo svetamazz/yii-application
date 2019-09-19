@@ -12,7 +12,7 @@ class m190917_152006_create_user_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('{{%userMusic}}', [
+        $this->createTable('{{%usermusic}}', [
             'id' => $this->primaryKey(),
             'email' => $this->string(30)->notNull()->unique(),
             'login' => $this->string(30)->notNull()->unique(),
@@ -26,6 +26,6 @@ class m190917_152006_create_user_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%userMusic}}');
+        $this->dropTable('{{%usermusic}}');
     }
 }

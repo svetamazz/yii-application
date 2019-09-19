@@ -13,21 +13,21 @@ class m190918_112635_insert_data_into_tables extends Migration
     public function safeUp()
     {
         $this->execute('alter table category AUTO_INCREMENT=0');
-
+        /*
         //usermusic table
-        $this->insert('usermusic',array(
+        $this->insert('user',array(
             'email'=>'admin@gmail.com',
             'login' =>'admin',
             'password' => md5('admin'),
             'role' => 'admin'
         ));
-        $this->insert('usermusic',array(
+        $this->insert('user',array(
             'email'=>'user@gmail.com',
             'login' =>'user',
             'password' => md5('user'),
             'role' => 'user'
         ));
-
+*/
         //category table
         $this->insert('category',array(
             'name'=>'поп'
@@ -88,7 +88,7 @@ class m190918_112635_insert_data_into_tables extends Migration
         $this->delete('sound');
         $this->delete('complaint');
         $this->delete('category');
-        $this->delete('usermusic');
+        $this->delete('user');
     }
 
     /*

@@ -23426,3 +23426,78 @@ $_SERVER = [
     'argv' => []
     'argc' => 0
 ]
+2019-09-19 12:54:44 [127.0.0.1][-][qdphgeu8f4hl5949impqjdp7uvb9t4ua][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: The table does not exist: usermusic in C:\OSPanel\domains\yii-application\vendor\yiisoft\yii2\db\ActiveRecord.php:438
+Stack trace:
+#0 C:\OSPanel\domains\yii-application\vendor\yiisoft\yii2\db\ActiveRecord.php(469): yii\db\ActiveRecord::getTableSchema()
+#1 C:\OSPanel\domains\yii-application\vendor\yiisoft\yii2\db\BaseActiveRecord.php(500): yii\db\ActiveRecord->attributes()
+#2 C:\OSPanel\domains\yii-application\vendor\yiisoft\yii2\db\BaseActiveRecord.php(291): yii\db\BaseActiveRecord->hasAttribute('id')
+#3 C:\OSPanel\domains\yii-application\vendor\yiisoft\yii2\validators\Validator.php(254): yii\db\BaseActiveRecord->__get('id')
+#4 C:\OSPanel\domains\yii-application\vendor\yiisoft\yii2\base\Model.php(367): yii\validators\Validator->validateAttributes(Object(app\models\UsermusicSearch), Array)
+#5 C:\OSPanel\domains\yii-application\frontend\models\UsermusicSearch.php(53): yii\base\Model->validate()
+#6 C:\OSPanel\domains\yii-application\frontend\modules\admin\controllers\UsermusicController.php(39): app\models\UsermusicSearch->search(Array)
+#7 [internal function]: app\modules\admin\controllers\UsermusicController->actionIndex()
+#8 C:\OSPanel\domains\yii-application\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\OSPanel\domains\yii-application\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#10 C:\OSPanel\domains\yii-application\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#11 C:\OSPanel\domains\yii-application\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/usermusic...', Array)
+#12 C:\OSPanel\domains\yii-application\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\OSPanel\domains\yii-application\frontend\web\index.php(17): yii\base\Application->run()
+#14 {main}
+2019-09-19 12:54:43 [127.0.0.1][-][qdphgeu8f4hl5949impqjdp7uvb9t4ua][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf-frontend' => '34b823facc682a38f8ce3467b5af1fd291cd38e15cabbbc3a1da69c86346ec6aa:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"XR45N2mdxWkrUX9lyXn6yY-2_LG54sVt\";}'
+    'advanced-frontend' => 'qdphgeu8f4hl5949impqjdp7uvb9t4ua'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'frontend.test'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3'
+    'HTTP_REFERER' => 'http://frontend.test/admin'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'uk,ru;q=0.9,en;q=0.8'
+    'HTTP_COOKIE' => '_csrf-frontend=34b823facc682a38f8ce3467b5af1fd291cd38e15cabbbc3a1da69c86346ec6aa%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22XR45N2mdxWkrUX9lyXn6yY-2_LG54sVt%22%3B%7D; advanced-frontend=qdphgeu8f4hl5949impqjdp7uvb9t4ua'
+    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_7.1-x64\\ext;c:\\ospanel\\modules\\php\\PHP_7.1-x64\\pear;c:\\ospanel\\modules\\php\\PHP_7.1-x64\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_7.1-x64;c:\\ospanel\\modules\\imagemagick;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.0-7.1-x64\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.0-7.1-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'frontend.test'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/yii-application/frontend/web/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/yii-application/frontend/web/'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/yii-application/frontend/web/index.php'
+    'REMOTE_PORT' => '56476'
+    'REDIRECT_URL' => '/admin/usermusic/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/admin/usermusic/index'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1568886883.145
+    'REQUEST_TIME' => 1568886883
+    'argv' => []
+    'argc' => 0
+]
