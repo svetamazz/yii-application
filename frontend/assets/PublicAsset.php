@@ -31,7 +31,8 @@ class PublicAsset extends AssetBundle
         "public/js/jquery.stickit.min.js",
         "public/js/menu.js",
         "public/audio_player/js/maudio.js",
-        "public/js/scripts.js"
+        "public/js/scripts.js",
+        "public/js/myscript.js",
 
     ];
     public $depends = [

@@ -1,3 +1,5 @@
+<?php use yii\helpers\HTML;?>
+
 <!--main content start-->
 <div class="main-content">
     <div class="container">
@@ -21,7 +23,7 @@
 
                 <br/>
 
-                <a href="#"> <input type="button" class="btn btn-primary" value="Скачати"> </a>
+                <?php echo Html::a('Скачати', ['/site/download','fileName'=>$song['fileName']], ['class'=>'btn btn-primary']); ?>
                 
             </div>
 

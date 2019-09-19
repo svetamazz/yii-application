@@ -58,6 +58,9 @@ class SoundController extends Controller
         ]);
     }
 
+      
+  
+
     /**
      * Creates a new Sound model.
      * If creation is successful, the browser will be redirected to the 'view' page.

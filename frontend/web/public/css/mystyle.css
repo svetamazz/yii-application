@@ -29,8 +29,9 @@
     cursor: pointer;
 }
 
-div.maudio .audio-control .progress-bar{
-    width:320px !important;
+audio{
+    width:550px !important;
+    height: 50px !important;
 }
 
 .downlBtn{

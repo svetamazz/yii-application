@@ -91,7 +91,7 @@ class Sound extends \yii\db\ActiveRecord
     }
 
     public static function getFromCategory($categoryId,$pageSize=10){
-        $query = Sound::find();
+        $query = Sound::find()->where(['categoryId' => $categoryId]);
         $countQuery = clone $query;
         $pagination = new Pagination(['totalCount' => $countQuery->count(),'pageSize'=>$pageSize]);
         $songs = $query->offset($pagination->offset)

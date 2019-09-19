@@ -7,6 +7,7 @@ use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+use common\models\User;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
@@ -89,6 +90,12 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionDownload($file){
+        if (file_exists($file)) {
+            return Yii::$app->response->sendFile($file);
+        }
+    }
+    
 
      /**
      * Displays songs from selected category.
@@ -97,11 +104,16 @@ class SiteController extends Controller
      */
     public function actionCategory($id)
     {
-        $songs=Sound::getFromCategory($id,2);
+        $categories = Category::getAll();
+        $songsData=Sound::getFromCategory($id,2);
+        $category = Category::find()->where(['id' => $id])->one();
 
         return $this->render('category',
             [
-                'songs'=>$songs
+                'categories' => $categories,
+                'categoryName'=>$category['name'],
+                'songs'=>$songsData['songs'],
+                'pagination'=>$songsData['pagination']
             ]
         );
     }
@@ -118,41 +130,6 @@ class SiteController extends Controller
             'song'=>$song,
             'songSize'=>$songSize
         ]);
-    }
-
-    /**
-     * Logs in a user.
-     *
-     * @return mixed
-     */
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            $model->password = '';
-
-            return $this->render('login', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Logs out the current user.
-     *
-     * @return mixed
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
     }
 
     /**
@@ -299,5 +276,48 @@ class SiteController extends Controller
         return $this->render('resendVerificationEmail', [
             'model' => $model
         ]);
+    }
+
+        /**
+     * Logs in a user.
+     *
+     * @return mixed
+     */
+    public function actionLogin()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        } else {
+            $model->password = '';
+
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Logs out the current user.
+     *
+     * @return mixed
+     */
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
+    }
+
+
+    public function actionTest(){
+
+        var_dump(Usermusic::find(1));die;
+
+        Yii::$app->user->login($user);
     }
 }

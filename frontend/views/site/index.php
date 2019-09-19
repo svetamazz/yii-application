@@ -15,8 +15,8 @@ use yii\helpers\Url;
                         <span class="songAuthor"> <?=$song['author']?> </span>
                         <span>
                             <a href="#" class="downloadBtn"><img class="downloadImg" src="/public/images/complaint.png"></a>
-                            <a href="<?= Url::toRoute(['site/view','id'=>$song['id']]); ?>" class="downloadBtn"><img class="downloadImg" src="/public/images/download.png"></a>
-                        <span>   
+                        <span>  
+                        <br/> 
                         <audio controls src="/uploads/<?=$song['fileName']?>"></audio>    
                     </div>
                 <?php endforeach; ?>
