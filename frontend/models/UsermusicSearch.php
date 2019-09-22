@@ -17,8 +17,8 @@ class UsermusicSearch extends Usermusic
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['email', 'login', 'password', 'role'], 'safe'],
+            [['id', 'isAdmin'], 'integer'],
+            [['email', 'username', 'password'], 'safe'],
         ];
     }
 
@@ -59,12 +59,12 @@ class UsermusicSearch extends Usermusic
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'isAdmin' => $this->isAdmin,
         ]);
 
         $query->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'login', $this->login])
-            ->andFilterWhere(['like', 'password', $this->password])
-            ->andFilterWhere(['like', 'role', $this->role]);
+            ->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'password', $this->password]);
 
         return $dataProvider;
     }

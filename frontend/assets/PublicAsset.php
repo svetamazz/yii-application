@@ -21,7 +21,7 @@ class PublicAsset extends AssetBundle
     "public/css/style.css",
     "public/css/responsive.css",
     "public/audio_player/css/maudio.css",
-    "public/css/mystyle.css"
+    "public/css/ownStyle.css"
 
     ];
     public $js = [
@@ -32,8 +32,7 @@ class PublicAsset extends AssetBundle
         "public/js/menu.js",
         "public/audio_player/js/maudio.js",
         "public/js/scripts.js",
-        "public/js/myscript.js",
-
+        "public/js/ownScript.js",
     ];
     public $depends = [
 

@@ -103,4 +103,19 @@ class Sound extends \yii\db\ActiveRecord
 
         return $data;
     }
+
+    public static function checkCntByKeyword($keyword){
+        $count = (new \yii\db\Query())->
+            from('sound')
+            ->where(['or', "name LIKE '%$keyword%'", "author LIKE '%$keyword%'"])
+            ->count();     
+
+        return $count;
+    }
+
+    public static function getByKeyword($keyword){
+        $query = Sound::find()->where(['or', "name LIKE '%$keyword%'", "author LIKE '%$keyword%'"])->all();
+
+        return \yii\helpers\Json::encode($query);
+    }
 }

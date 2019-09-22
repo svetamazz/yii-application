@@ -9,13 +9,13 @@ use Yii;
  *
  * @property int $id
  * @property string $email
- * @property string $login
+ * @property string $username
  * @property string $password
- * @property string $role
+ * @property int $isAdmin
  *
  * @property Complaint[] $complaints
  */
-class Usermusic extends \yii\db\ActiveRecord
+class Usermusic extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -31,12 +31,12 @@ class Usermusic extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'login', 'password', 'role'], 'required'],
-            [['email', 'login'], 'string', 'max' => 30],
+            [['email', 'username', 'password', 'isAdmin'], 'required'],
+            [['isAdmin'], 'integer'],
+            [['email', 'username'], 'string', 'max' => 30],
             [['password'], 'string', 'max' => 100],
-            [['role'], 'string', 'max' => 10],
             [['email'], 'unique'],
-            [['login'], 'unique'],
+            [['username'], 'unique'],
         ];
     }
 
@@ -48,9 +48,9 @@ class Usermusic extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'email' => 'Email',
-            'login' => 'Login',
+            'username' => 'Username',
             'password' => 'Password',
-            'role' => 'Role',
+            'isAdmin' => 'Role',
         ];
     }
 
@@ -61,4 +61,31 @@ class Usermusic extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Complaint::className(), ['userMusicId' => 'id']);
     }
+
+    public static function findIdentity($id){
+		return static::findOne($id);
+	}
+ 
+	public static function findIdentityByAccessToken($token, $type = null){
+		throw new NotSupportedException();//I don't implement this method because I don't have any access token column in my database
+	}
+ 
+	public function getId(){
+		return $this->id;
+	}
+ 
+	public function getAuthKey(){
+		throw new NotSupportedException();
+	}
+ 
+	public function validateAuthKey($authKey){
+		throw new NotSupportedException();
+	}
+	public static function findByUsername($username){
+		return self::findOne(['username'=>$username]);
+	}
+ 
+	public function validatePassword($password){
+		return $this->password === $password;
+	}
 }

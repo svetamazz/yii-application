@@ -15,9 +15,9 @@ class m190917_152006_create_user_table extends Migration
         $this->createTable('{{%usermusic}}', [
             'id' => $this->primaryKey(),
             'email' => $this->string(30)->notNull()->unique(),
-            'login' => $this->string(30)->notNull()->unique(),
+            'username' => $this->string(30)->notNull()->unique(),
             'password' => $this->string(100)->notNull(),
-            'role'=>$this->string(10)->notNull()
+            'isAdmin'=>$this->integer()->notNull()
         ]);
     }
 

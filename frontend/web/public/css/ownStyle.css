@@ -1,0 +1,61 @@
+input.empty {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: 400;
+    text-decoration: inherit;
+  padding: 7px;
+  font-size: 20px;
+  border:1px solid #ddd;
+  border-radius:4px;
+  width: 80%;
+  display: inline-block;
+}
+
+#search{
+    margin-bottom:7px;
+    margin-left: 5px;
+}
+
+.audio {
+    background: #fff;
+    padding: 5px 10px 10px 10px;
+    margin:10px 0px;
+}
+
+.songName{
+    margin:0px 10px;
+    font-weight: bold;
+    font-size: 1vw;
+}
+
+.songAuthor{
+    margin:0px 10px;
+    font-size: 0.75vw;
+    color:grey;
+}
+
+.downloadBtn{
+    float:right;
+}
+
+.downloadImg{
+    width:35px;
+    margin-left:5px;
+}
+
+.downloadBtn:hover{
+    cursor: pointer;
+}
+
+audio{
+    width:43vw !important;
+    height: 2.8vw !important;
+}
+
+.downlBtn{
+    margin-bottom:10px;
+}
+
+.info{
+    font-size: 0.9vw;
+}

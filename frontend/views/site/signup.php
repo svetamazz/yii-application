@@ -19,10 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to signup:</p>
+    <p>Заповніть, будь ласка, наступні поля, щоб зареєструватися:</p>
 
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-xl-5 col-lg-5 col-md-6 col-sm-8">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>

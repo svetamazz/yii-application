@@ -1,4 +1,10 @@
 <?php
+/*
+if(!Yii::$app->user->isAdmin()){
+    header("/site/error");
+    die();
+}
+*/
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -42,6 +48,7 @@ AppAsset::register($this);
         ['label' => 'Complaint', 'url' => ['/admin/complaint/index']],
         ['label' => 'User', 'url' => ['/admin/usermusic/index']]
     ];
+    
   
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

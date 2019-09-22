@@ -14,15 +14,15 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="main-content">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-6">
 
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
+    <p>Заповніть, будь ласка, наступні поля, щоб увійти:</p>
 
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-xl-5 col-lg-5 col-md-6 col-sm-8">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
@@ -30,12 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'password')->passwordInput() ?>
 
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div style="color:#999;margin:1em 0">
-                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
-                    <br>
-                    Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
-                </div>
 
                 <div class="form-group">
                     <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>

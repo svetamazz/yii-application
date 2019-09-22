@@ -2,6 +2,8 @@
  common scripts
  --------------------------------------------- */
 ;(function ($) {
+
+
     'use strict'; // use strict to start
 
     /* === Stickit === */

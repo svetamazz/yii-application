@@ -9,17 +9,22 @@ use yii\helpers\Url;
         <div class="row">
             <div class="col-md-8">
 
-                <?php foreach($songs as $song):?>
-                    <div class="audio">
-                        <span class="songName"> <?=$song['name']?></span>
-                        <span class="songAuthor"> <?=$song['author']?> </span>
-                        <span>
-                            <a href="#" class="downloadBtn"><img class="downloadImg" src="/public/images/complaint.png"></a>
-                        <span>  
-                        <br/> 
-                        <audio controls src="/uploads/<?=$song['fileName']?>"></audio>    
-                    </div>
-                <?php endforeach; ?>
+            <div>
+                <input type="text" class="form-control empty" id="searchInput" placeholder="&#xF002;" />
+                <input type='button' class='btn btn-primary' id='search' value='шукати'>
+            </div>
+
+                <div id="songs">
+                    <?php foreach($songs as $song):?>
+                        <div class="audio">
+                            <span class="songName"> <?=$song['name']?></span>
+                            <span class="songAuthor"> <?=$song['author']?> </span>
+                            <span><a href="#" class="downloadBtn"><img class="downloadImg" src="/public/images/complaint.png"></a><span><br/> 
+                            <audio controls src="/uploads/<?=$song['fileName']?>"></audio>    
+                        </div>
+                    <?php endforeach; ?>
+
+                </div>
               
                 <?php
                     echo LinkPager::widget([

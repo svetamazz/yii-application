@@ -14,19 +14,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'login')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
     <?
-         $items = [
-            'user' => 'user',
-            'admin' => 'admin'
-        ];
-        $params = [
-            'prompt' => 'Choose role...'
-        ];
-        echo $form->field($model, 'role')->dropDownList($items,$params);
+    $items = ['1'=>'admin','0'=>'user'];
+    $params = [
+        'prompt' => 'Choose user role'
+    ];
+    echo $form->field($model, 'isAdmin')->dropDownList($items,$params);
     ?>
 
     <div class="form-group">

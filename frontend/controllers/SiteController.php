@@ -19,6 +19,7 @@ use frontend\models\ContactForm;
 use app\models\Sound;
 use app\models\Category;
 use  yii\data\Pagination;
+use yii\web\UploadedFile;
 
 /**
  * Site controller
@@ -72,6 +73,40 @@ class SiteController extends Controller
         ];
     }
 
+
+    public function actionSearch($keyword){
+        $count = Sound::checkCntByKeyword($keyword);
+
+        if($count==0) return 0;
+
+        $sounds=Sound::getByKeyword($keyword);
+        return $sounds;
+    }
+
+    public function actionAddsound(){
+
+        $model = new Sound();
+        $categories = Category::getAll();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            
+            $model->fileName=UploadedFile::getInstance($model,'fileName');
+            $name=$model->name.'-'.$model->author.'-'.date('Y-m-d-H-i-s').'.'.$model->fileName->extension;
+            $model->fileName->saveAs('uploads/'.$name);
+
+            $model->fileName=$name;
+            
+            $model->save();
+
+            return $this->redirect(['/']);
+        }
+
+        return $this->render('addsound', [
+            'model' => $model,
+            'categories' => $categories
+        ]);
+    }
+
     /**
      * Displays homepage.
      *
@@ -80,7 +115,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $categories = Category::getAll();
-        $songsData= Sound::getAll(2);
+        $songsData= Sound::getAll(5);
 
         return $this->render('index',
         [
@@ -105,7 +140,7 @@ class SiteController extends Controller
     public function actionCategory($id)
     {
         $categories = Category::getAll();
-        $songsData=Sound::getFromCategory($id,2);
+        $songsData=Sound::getFromCategory($id,3);
         $category = Category::find()->where(['id' => $id])->one();
 
         return $this->render('category',

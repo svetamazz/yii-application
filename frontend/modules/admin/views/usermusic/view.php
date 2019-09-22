@@ -31,9 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'email:email',
-            'login',
+            'username',
             'password',
-            'role',
+            'isAdmin',
         ],
     ]) ?>
 

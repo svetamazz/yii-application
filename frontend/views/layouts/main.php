@@ -45,12 +45,26 @@ PublicAsset::register($this);
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav text-uppercase">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/">Головна</a></li>
                 </ul>
                 <div class="i_con">
                     <ul class="nav navbar-nav text-uppercase">
-                        <li><a href="/site/login">Login</a></li>
-                        <li><a href="/site/signup">Register</a></li>
+                        <?php
+                            if (Yii::$app->user->isGuest) {
+                                echo "<li><a href='/site/signup'>Реєстрація</a></li>
+                                      <li><a href='/site/login'>Увійти</a></li>";
+                            } else {
+                                echo "<li><a href='/site/addsound'>Додати трек</a></li>";
+                                echo '<li>'
+                                    . Html::beginForm(['/site/logout'], 'post')
+                                    . Html::submitButton(
+                                        'Вийти (' . Yii::$app->user->identity->username . ')',
+                                        ['class' => 'btn btn-link logout']
+                                    )
+                                    . Html::endForm()
+                                    . '</li>';
+                            }
+                        ?>
                     </ul>
                 </div>
 
@@ -73,7 +87,7 @@ PublicAsset::register($this);
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
-                        &copy; 2019 IT Step,  Built with <i class="fa fa-heart"></i>
+                        &copy; 2019 IT Step, Built with <i class="fa fa-heart"></i>
                     </div>
                 </div>
             </div>

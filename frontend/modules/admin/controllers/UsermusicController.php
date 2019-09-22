@@ -66,11 +66,7 @@ class UsermusicController extends Controller
     {
         $model = new Usermusic();
 
-        if ($model->load(Yii::$app->request->post())) {
-
-            $model->password=md5($model->password);
-            $model->save();
-
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -90,11 +86,7 @@ class UsermusicController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
-
-            $model->password=md5($model->password);
-            $model->save();
-
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
